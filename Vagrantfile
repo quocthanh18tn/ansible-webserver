@@ -24,4 +24,8 @@ Vagrant.configure('2') do |config|
     web.vm.network :forwarded_port, guest: 80, host: 8080
     web.vm.network :private_network, ip: '192.168.60.4'
   end
+
+  config.vm.provision :ansible do |ans|
+    ans.playbook = 'provisioning/playbook.yml'
+  end
 end

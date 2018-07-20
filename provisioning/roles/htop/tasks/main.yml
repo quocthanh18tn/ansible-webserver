@@ -1,0 +1,9 @@
+---
+
+#- name: Update apt cache  #title show ra cho coi
+#  command: apt update
+
+- name: Install htop
+  apt:
+    name: htop
+    state: present

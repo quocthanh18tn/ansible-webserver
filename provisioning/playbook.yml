@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  become: yes
+  roles:
+    - base
+    - htop
+    - pydf
+    - tmux
+    - zsh

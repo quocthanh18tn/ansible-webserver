@@ -1,0 +1,16 @@
+---
+
+#- name: Update apt cache  #title show ra cho coi
+#  command: apt update
+
+- name: Install oh-my-zsh
+#  apt: name=nginx state=present
+  apt:
+    name: zsh
+    state: present
+
+
+- git:
+    repo: 'https://foosball.example.org/path/to/repo.git'
+    dest: /srv/checkout
+    clone: no

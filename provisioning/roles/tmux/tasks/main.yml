@@ -1,0 +1,10 @@
+---
+
+#- name: Update apt cache  #title show ra cho coi
+#  command: apt update
+
+- name: Install tmux
+#  apt: name=nginx state=present
+  apt:
+    name: tmux
+    state: present

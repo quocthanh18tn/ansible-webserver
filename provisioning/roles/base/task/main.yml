@@ -1,0 +1,9 @@
+---
+
+#- name: Update apt cache  #title show ra cho coi
+#  command: apt update
+
+- name: apt-get update
+  apt:
+    update_cache: yes
+    become: true
