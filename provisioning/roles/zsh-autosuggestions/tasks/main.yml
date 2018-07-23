@@ -3,14 +3,40 @@
 #- name: Update apt cache  #title show ra cho coi
 #  command: apt update
 
-- name: Install oh-my-zsh
-#  apt: name=nginx state=present
-  apt:
-    name: zsh
-    state: present
+ # name: Backing up existing ~/.zshrc
+ #  shell: if [ -f ~/.zshrc ]; then mv ~/.zshrc{,.orig}; fi
+ #  when: installation|success
+ #  sudo: no
+
+- name: Cloning  oh-my-zsh
+  git:
+    repo=https://github.com/robbyrussell/oh-my-zsh
+    dest=~/.oh-my-zsh
+  # register: cloning
+
+# - name: Creating new ~/.zshrc
+#   command: cp /home/vagrant/.oh-my-zsh/templates/zshrc.zsh-template /home/vagrant/.zshrc
+#cach nay duoc nhung k hay cho lam, co cach khac khong.
+  # copy:
+  #   src=~/.oh-my-zsh/templates/zshrc.zsh-template
+  #   dest=~/.zshrc
 
 
-- git:
-    repo: 'https://foosball.example.org/path/to/repo.git'
-    dest: /srv/checkout
-    clone: no
+
+# k copy duoc thu muc .zshrc thay bang /home/vagrant van khong duoc.. how to fix
+- name: Creating new ~/.zshrc
+  copy:
+    src=~/.oh-my-zsh/templates/zshrc.zsh-template
+    dest=~/.zshrc
+
+- name: zsh-autosuggestions
+  git:
+    repo=https://github.com/zsh-users/zsh-autosuggestions
+    dest=~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  # register: cloning
+
+- replace:
+    path: ~/.zshrc
+    regexp: '^  git'
+    replace: '^  git zsh-autosuggestions'
+    backup: yes

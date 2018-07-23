@@ -5,7 +5,7 @@ VPS new
     install autosuggestion
     install postgresql and mysql
     install RoR -> RVM -> NVM
-    install redit and elisticsearch
+    install reddis and elastic search
     install nginx apache
 
 
@@ -43,3 +43,39 @@ touch htop/task/main.yml
 touch pydf/task/main.yml
 touch tmux/task/main.yml
 touch zsh/task/main.yml
+
+
+vagrant ssh -> zsh -> .zshrc  -> bash -> rm -rf .zshcr
+
+ ve xem lai config file zshrc how to install
+chinh lai file .zshrc
+
+
+
+name: ensure apt cache is up to date
+    apt: update_cache=yes
+  - name: ensure packages are installed
+    apt: name={{item}}
+    with_items:
+        - postgresql
+        - libpq-dev
+        - python-psycopg2
+
+        https://github.com/ansible/ansible-examples/blob/master/language_features/postgresql.yml
+
+
+    mysql:
+
+    name: Install MySQL
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - python-mysqldb
+    - mysql-server
+
+    https://github.com/Friz-zy/ansible-mysql-5.7-relication-failover-ubuntu-16.04/blob/master/roles/mysql/tasks/main.yml
+
+
+
+//install about con` lai
+    https://github.com/aleks/ansible-rails/tree/master/roles

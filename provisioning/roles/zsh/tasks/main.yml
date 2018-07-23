@@ -4,6 +4,7 @@
 #  command: apt update
 
 - name: Install zsh
+  become: yes
 #  apt: name=nginx state=present
   apt:
     name: zsh
