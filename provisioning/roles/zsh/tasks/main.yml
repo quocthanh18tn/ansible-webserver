@@ -5,7 +5,6 @@
 
 - name: Install zsh
   become: yes
-#  apt: name=nginx state=present
   apt:
     name: zsh
     state: present

@@ -79,3 +79,18 @@ name: ensure apt cache is up to date
 
 //install about con` lai
     https://github.com/aleks/ansible-rails/tree/master/roles
+
+
+scp <source> <destination>
+// copy file trong vsp ra may chu
+scp vagrant@192.168.60.4:/home/vagrant/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh zsh-autosuggestions.zsh
+
+
+// copy file trong  may chu ra vsp
+scp zsh-autosuggestions.zsh vagrant@192.168.60.4:/home/vagrant/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+ git reset --hard origin/master   //lay code tren repos ghi chep de len code hien tai
+
+git commit --all --amend --no-edit    //khong tao ra 2 commit + theo nhung thay doi moi nhat
+ -> git push -u -f origin master

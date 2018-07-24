@@ -1,42 +1,35 @@
 ---
 
-#- name: Update apt cache  #title show ra cho coi
-#  command: apt update
-
- # name: Backing up existing ~/.zshrc
- #  shell: if [ -f ~/.zshrc ]; then mv ~/.zshrc{,.orig}; fi
- #  when: installation|success
- #  sudo: no
-
-- name: Cloning  oh-my-zsh
+- name: Cloning oh-my-zsh
   git:
-    repo=https://github.com/robbyrussell/oh-my-zsh
-    dest=~/.oh-my-zsh
-  # register: cloning
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
+    update: no
 
-# - name: Creating new ~/.zshrc
-#   command: cp /home/vagrant/.oh-my-zsh/templates/zshrc.zsh-template /home/vagrant/.zshrc
-#cach nay duoc nhung k hay cho lam, co cach khac khong.
-  # copy:
-  #   src=~/.oh-my-zsh/templates/zshrc.zsh-template
-  #   dest=~/.zshrc
-
-
-
-# k copy duoc thu muc .zshrc thay bang /home/vagrant van khong duoc.. how to fix
 - name: Creating new ~/.zshrc
   copy:
-    src=~/.oh-my-zsh/templates/zshrc.zsh-template
-    dest=~/.zshrc
+    src: ~/.oh-my-zsh/templates/zshrc.zsh-template
+    dest: ~/.zshrc
+    force: no
 
 - name: zsh-autosuggestions
   git:
-    repo=https://github.com/zsh-users/zsh-autosuggestions
-    dest=~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-  # register: cloning
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    update: no
 
-- replace:
+- name: replace plugin git = git zsh-autosuggestions
+  lineinfile:
     path: ~/.zshrc
-    regexp: '^  git'
-    replace: '^  git zsh-autosuggestions'
-    backup: yes
+    regexp: '^  git$'
+    line: '  git zsh-autosuggestions'
+    state: present
+    backrefs: yes
+
+- name: change color zsh
+  lineinfile:
+    path: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    regexp: "^ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'$"
+    line: "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=blue'"
+    state: present
+    backrefs: yes

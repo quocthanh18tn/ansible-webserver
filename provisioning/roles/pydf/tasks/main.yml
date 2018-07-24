@@ -5,14 +5,12 @@
 
 - name: Install pip
   become: yes
-#  apt: name=nginx state=present
   apt:
     name: python-pip
     state: present
 
 
 - name: Install pydf
-#  apt: name=nginx state=present
   pip:
     name: pydf
     state: present
