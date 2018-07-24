@@ -8,3 +8,5 @@
     - tmux
     - zsh
     - zsh-autosuggestions
+    - mysql
+    - postgresql

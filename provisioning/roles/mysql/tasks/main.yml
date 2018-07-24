@@ -1,0 +1,12 @@
+---
+# tasks file for mysql
+
+- name: Install mysql
+  become: yes
+  apt: name={{ item }}
+  with_items:
+    - python-selinux
+    - mysql-server
+    - python-mysqldb
+
+# Read more https://github.com/bennojoy/mysql/blob/9a8fe58d227f1bf9798a315d89f6af7984edfeb6/tasks/main.yml
