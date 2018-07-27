@@ -1,12 +1,18 @@
 ---
 
 - hosts: all
+  become: yes
   roles:
     - base
-    - htop
-    - pydf
-    - tmux
-    - zsh
-    - zsh-autosuggestions
+    # - htop
+    # - pydf
+    # - tmux
+    # - zsh
+    # - zsh-autosuggestions
+    # - postgresql
+    # # - chrome
+    # - git
+    # - meld
     - mysql
-    - postgresql
+    - php
+    # - vlc

@@ -4,6 +4,7 @@
 #  command: apt update
 
 - name: Install tmux
+  become: no
 #  apt: name=nginx state=present
   apt:
     name: tmux

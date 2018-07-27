@@ -2,8 +2,7 @@
 # tasks file for mysql
 
 - name: Install mysql
-  become: yes
-  apt: name={{ item }}
+  apt: name={{ item }} state=present
   with_items:
     - python-selinux
     - mysql-server

@@ -1,0 +1,59 @@
+---
+
+#- name: Update apt cache  #title show ra cho coi
+#  command: apt update
+
+- name: Add the ondrej PHP PPA
+  apt_repository:
+    repo: 'ppa:ondrej/php'
+
+- name: Update the apt cache
+  become: no
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install PHP
+  apt:
+    name: php
+    state: present
+
+- name: Install PHP package
+  apt:
+    name={{ item }} state=present
+  with_items:
+    - php
+    - php-fpm
+    - php-mysql
+    - php-xml
+
+- name: Remove apache2
+  apt:
+    name: apache2
+    state: absent
+
+# become chua xai o duoi
+
+# - name: Generate new root password
+#   command: openssl rand -hex 7
+#   register: mysql_new_root_pass
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ""
+    state: absent
+
+- name: Remove test database
+  mysql_db:
+    name: test
+    state: absent
+
+- name: Create root password
+  mysql_user:
+    name: thanh
+    password: goodluck
+    state: present
+  # mysql_user: password={{mysql_new_root_pass.stdout}}
+
+# - name: Output new root password
+#   debug: msg="New root password is {{mysql_new_root_pass.stdout}}"

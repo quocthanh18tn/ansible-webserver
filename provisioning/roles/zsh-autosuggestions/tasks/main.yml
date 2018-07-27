@@ -1,24 +1,28 @@
 ---
 
 - name: Cloning oh-my-zsh
+  become: no
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
     dest: ~/.oh-my-zsh
     update: no
 
 - name: Creating new ~/.zshrc
+  become: no
   copy:
     src: ~/.oh-my-zsh/templates/zshrc.zsh-template
     dest: ~/.zshrc
     force: no
 
 - name: zsh-autosuggestions
+  become: no
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     update: no
 
 - name: replace plugin git = git zsh-autosuggestions
+  become: no
   lineinfile:
     path: ~/.zshrc
     regexp: '^  git$'
@@ -27,6 +31,7 @@
     backrefs: yes
 
 - name: change color zsh
+  become: no
   lineinfile:
     path: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     regexp: "^ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'$"

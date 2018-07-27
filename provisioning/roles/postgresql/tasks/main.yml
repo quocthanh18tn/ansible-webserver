@@ -2,7 +2,6 @@
 # tasks file for postgresql
 
 - name: Install PostgreSQL
-  become: yes
   apt: name={{ item }}
   with_items:
     - postgresql

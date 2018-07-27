@@ -1,0 +1,28 @@
+---
+
+#- name: Update apt cache  #title show ra cho coi
+#  command: apt update
+- name: "apt | ensure Google linux signing key present"
+  become: no
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+
+- name: Add Google Chrome repo
+  # apt_repository:
+  #   repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+  #   state: present
+  #   filename: google-chrome
+  #   update_cache: yes
+  copy:
+    content: "deb http://dl.google.com/linux/chrome/deb/ stable main"
+    dest: /etc/apt/sources.list.d/google-chrome.list
+    owner: root
+    group: root
+    mode: 644
+    update_cache: yes
+
+- name: Install chrome
+#  apt: name=nginx state=present
+  apt:
+    pkg: google-chrome-stable
+    state: installed

@@ -3,7 +3,9 @@
 #- name: Update apt cache  #title show ra cho coi
 #  command: apt update
 
-- name: Install zsh
+- name: Install meld
+  become: yes
+#  apt: name=nginx state=present
   apt:
-    name: zsh
+    name: meld
     state: present

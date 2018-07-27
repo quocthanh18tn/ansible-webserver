@@ -3,6 +3,8 @@
 #- name: Update apt cache  #title show ra cho coi
 #  command: apt update
 
-- name: apt-get update
+- name: Install VLC
+#  apt: name=nginx state=present
   apt:
-    update_cache: yes
+    name: vlc
+    state: present

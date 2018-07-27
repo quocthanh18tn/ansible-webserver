@@ -4,13 +4,13 @@
 #  command: apt update
 
 - name: Install pip
-  become: yes
   apt:
     name: python-pip
     state: present
 
 
 - name: Install pydf
+  become: no
   pip:
     name: pydf
     state: present
