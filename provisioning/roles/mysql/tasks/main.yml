@@ -8,4 +8,22 @@
     - mysql-server
     - python-mysqldb
 
+- name: update pass
+  mysql_user: name=root password={{ mysql_pass }}
+
+- name: Create my.cnf
+  template:
+    src: .my.cnf
+    dest: /root/.my.cnf
+    force: no
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ""
+    state: absent
+
+- name: Remove test database
+  mysql_db:
+    name: test
+    state: absent
 # Read more https://github.com/bennojoy/mysql/blob/9a8fe58d227f1bf9798a315d89f6af7984edfeb6/tasks/main.yml

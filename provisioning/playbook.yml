@@ -4,15 +4,16 @@
   become: yes
   roles:
     - base
+    # - chrome
+    # - git
     # - htop
+    # - meld
+    # - mysql
+    # - php
+    # - postgresql
     # - pydf
+    - sublime
     # - tmux
+    # - vlc
     # - zsh
     # - zsh-autosuggestions
-    # - postgresql
-    # # - chrome
-    # - git
-    # - meld
-    - mysql
-    - php
-    # - vlc

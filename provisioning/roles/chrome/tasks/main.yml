@@ -3,7 +3,6 @@
 #- name: Update apt cache  #title show ra cho coi
 #  command: apt update
 - name: "apt | ensure Google linux signing key present"
-  become: no
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
 
 
@@ -19,10 +18,14 @@
     owner: root
     group: root
     mode: 644
+    force: no
+
+- name: apt-get update
+  apt:
     update_cache: yes
 
 - name: Install chrome
 #  apt: name=nginx state=present
   apt:
     pkg: google-chrome-stable
-    state: installed
+    state: present

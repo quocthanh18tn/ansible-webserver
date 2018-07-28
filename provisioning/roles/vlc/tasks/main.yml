@@ -6,5 +6,5 @@
 - name: Install VLC
 #  apt: name=nginx state=present
   apt:
-    name: vlc
+    pkg: vlc
     state: present
