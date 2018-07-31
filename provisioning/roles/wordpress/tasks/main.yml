@@ -1,0 +1,9 @@
+---
+
+# WordPress
+- name: Download WordPress
+  get_url:
+    url: https://wordpress.org/latest.zip
+    dest: /tmp/wordpress.zip
+    checksum: "sha1:{{wp_checksum.content}}"
+    force: no

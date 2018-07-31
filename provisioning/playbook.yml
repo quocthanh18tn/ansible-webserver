@@ -8,11 +8,12 @@
     # - git
     # - htop
     # - meld
-    # - mysql
-    # - php
+    - mysql
+    - php
+    - nginx
     # - postgresql
     # - pydf
-    - sublime
+    # - sublime
     # - tmux
     # - vlc
     # - zsh

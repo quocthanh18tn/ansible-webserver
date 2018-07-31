@@ -88,9 +88,13 @@ scp vagrant@192.168.60.4:/home/vagrant/.oh-my-zsh/custom/plugins/zsh-autosuggest
 
 // copy file trong  may chu ra vsp
 scp zsh-autosuggestions.zsh vagrant@192.168.60.4:/home/vagrant/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+scp index.php vagrant@192.168.60.4:/home/vagrant/www/book.example.com/index.php
 
 
  git reset --hard origin/master   //lay code tren repos ghi chep de len code hien tai
 
 git commit --all --amend --no-edit    //khong tao ra 2 commit + theo nhung thay doi moi nhat
  -> git push -u -f origin master
+
+echo "<?php echo date('H:i:s');?> " | sudo tee /var/www/book.example.com/index.php
+
