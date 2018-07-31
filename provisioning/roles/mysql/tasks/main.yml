@@ -8,6 +8,14 @@
     - mysql-server
     - python-mysqldb
 
+- name: Create WordPress MySQL database
+  mysql_db:
+    name: wordpress
+    state: present
+
+# - name: Create WordPress MySQL user
+#   mysql_user: name=root host=localhost password=bananas priv=wordpress.*:ALL
+
 - name: update pass
   mysql_user: name=root password={{ mysql_pass }}
 
