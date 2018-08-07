@@ -123,3 +123,27 @@ step3: run command copy file to virtual host
 
 --------------
 step4: completed install env wordpress in your browser
+
+
+-------task 2: learning encrypt and decrypt password
+playbook.yml: add command to run vagrant provision (if not add command , will notify fault)
+--
+    config.vm.provision :ansible do |ans|
+    ans.playbook = 'provisioning/playbook.yml'
+    ans.ask_vault_pass = true
+  end
+end
+--
+------file need to encrypt :
+ansible-vault encrypt provisioning/roles/mysql/vars/main.yml
+-> enter password ( example: abc)
+ansible-vault encrypt provisioning/roles/wordpress/vars/main.yml
+-> enter password ( example: abc)
+note: only use one password when use vagrant provision
+-----file need to decrypt
+ansible-vault decrypt provisioning/roles/mysql/vars/main.yml
+ansible-vault decrypt provisioning/roles/wordpress/vars/main.yml
+-> enter password (use for encrypt : abc)
+------end-------
+
+
