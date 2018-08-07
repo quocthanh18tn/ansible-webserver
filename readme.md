@@ -98,3 +98,28 @@ git commit --all --amend --no-edit    //khong tao ra 2 commit + theo nhung thay 
 
 echo "<?php echo date('H:i:s');?> " | sudo tee /var/www/book.example.com/index.php
 
+// note 7/8/2018
+step1: create database and user use for wordpress
+----------------
+- name: Create WordPress MySQL database
+  mysql_db:
+    name: wordpress
+    state: present
+
+- name: Create User Wordpress
+  mysql_user: name=wordpress host=localhost password={{ wordpress_pass }} priv=wordpress.*:ALL
+------------------
+
+step2: vao trang browser , go dia chi ip, config tren trang web wordpress
+-> sau do web chi ra :not have permission to write wp-config.php itself
+-> copy noi dung file wp-config.php tren browser vao file wp-config.php trong folder templates.
+--------------
+step3: run command copy file to virtual host
+
+- name: Create wp-config
+  template:
+    src: wp-config.php
+    dest: /var/www/book.example.com/wp-config.php
+
+--------------
+step4: completed install env wordpress in your browser
