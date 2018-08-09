@@ -147,3 +147,6 @@ ansible-vault decrypt provisioning/roles/wordpress/vars/main.yml
 ------end-------
 
 
+task today 9/8
+--------------------
+Install nodejs -> package quan ly la nvm

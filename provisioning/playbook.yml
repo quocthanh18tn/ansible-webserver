@@ -6,16 +6,17 @@
     - base
     # - chrome
     # - git
-    # - htop
+    - htop
     # - meld
-    - mysql
-    - php
+    # - mysql
+    # - php
     - nginx
-    # - postgresql
+    - postgresql
     # - pydf
     # - sublime
     # - tmux
     # - vlc
     # - zsh
     # - zsh-autosuggestions
-    - wordpress
+    # - wordpress
+    - rails

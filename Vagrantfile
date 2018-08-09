@@ -26,8 +26,8 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provision :ansible do |ans|
-    # ans.playbook = 'provisioning/playbook.yml'
-    ans.playbook = 'provisioning/wordpress.yml'
+    ans.playbook = 'provisioning/playbook.yml'
+    # ans.playbook = 'provisioning/wordpress.yml'
     ans.ask_vault_pass = true
   end
 end
