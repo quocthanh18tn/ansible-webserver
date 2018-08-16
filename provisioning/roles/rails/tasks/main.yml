@@ -1,76 +1,11 @@
 ---
 
-#INSTALl package nvm
-- name: Install dependencies
-  apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
-  with_items:
-    - git
-    - curl
-    - build-essential
-    - libssl-dev
+- name: Install RVM
+  import_tasks: 'rvm.yml'
+  become: yes
+  become_user: '{{ rvm1_user }}'
 
-- name: NVM | nvm | get stats on nvm
-  stat: path="{{ nvm_dest }}"
-  register: nvm_stat
-
-- name:  NVM | nvm | create .nvm directory
-  file:
-    path: "{{ nvm_dest }}"
-    # group: "{{ nvm_user }}"
-    owner: "{{ nvm_user }}"
-    mode: 0755
-    recurse: yes
-    state: directory
-  when: not nvm_stat.stat.exists
-
-- name: NVM | nvm | download nvm script
-  get_url:
-    dest: "{{ nvm_dest }}"
-    url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
-
-- name: NVM | permission | update .nvm dir permission
-  file:
-    path: "{{ nvm_dest }}"
-    # group: "{{ nvm_user }}"
-    owner: "{{ nvm_user }}"
-    mode: 0755
-    recurse: yes
-    state: directory
-
-- name: NVM | nvm | ensure ~/.bashrc exists
-  copy:
-    content: ""
-    dest: "{{ nvm_working_path }}/.bashrc"
-    force: no
-
-- name: NVM | nvm | add nvm to ~/.bashrc
-  lineinfile: dest="{{ nvm_working_path }}/.bashrc" line="source ~/.nvm/nvm.sh"
-
-- name: NVM | node | get stats on node
-  stat: path="{{ nvm_dest }}/versions/node/v{{ nvm_node_version }}"
-  register: node_stat
-
-- name: NVM | node | install node
-  shell: "source {{ nvm_dest }}/nvm.sh && nvm install {{ nvm_node_version }}"
-  args:
-     executable: /bin/bash
-  when: not node_stat.stat.exists
-
-# - name: NVM | node | set default Node version {{ nvm_node_version }} to be used in new shell
-#   shell: "source {{nvm_dest}}/nvm.sh && nvm alias default {{nvm_node_version}}"
-#   args:
-#      executable: /bin/bash
-#   when: not node_stat.stat.exists
-
-# - name: NVM | pkgs | install npm module(s)
-#   shell: "source {{ nvm_dest }}/nvm.sh && nvm use v{{ nvm_node_version }} && {{ nvm_dest }}/versions/node/v{{ nvm_node_version }}/bin/npm install -g {{ item.pkg }}@{{ item.version }}"
-#   with_items: "{{nvm_npm_pkgs}}"
-#   args:
-#     executable: /bin/bash
-#     creates: "{{nvm_dest}}/versions/node/v{{nvm_node_version}}/lib/node_modules/{{item.pkg}}"
-
-
-# - name: NVM | nvm | download nvm script
-#   get_url:
-#     dest: "{{ nvm_dest }}"
-#     url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
+- name: Install Ruby and Gems
+  import_tasks: 'rubies.yml'
+  become: yes
+  become_user: '{{ rvm1_user }}'

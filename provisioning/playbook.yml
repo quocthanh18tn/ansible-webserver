@@ -19,4 +19,5 @@
     # - zsh
     # - zsh-autosuggestions
     # - wordpress
+    - nvm
     - rails

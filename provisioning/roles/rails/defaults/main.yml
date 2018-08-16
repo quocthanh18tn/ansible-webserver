@@ -1,28 +1,5 @@
 ---
 
-rvm1_temp_download_path: '/tmp'
-
-rvm1_default_ruby_version: '{{ rvm1_rubies | last if rvm1_rubies and rvm1_rubies is iterable else rvm1_rubies }}'
-
-rvm1_rvm: '{{ rvm1_install_path }}/bin/rvm'
-
-rvm1_symlink_binaries:
-  - 'erb'
-  - 'executable-hooks-uninstaller'
-  - 'gem'
-  - 'irb'
-  - 'rake'
-  - 'rdoc'
-  - 'ri'
-  - 'ruby'
-
-rvm1_symlink_bundler_binaries:
-  - 'bundle'
-  - 'bundler'
-
-rvm1_symlink_to: '/usr/local/bin'
-
-
 # Install 1 or more versions of ruby
 # The last ruby listed will be set as the default ruby
 rvm1_rubies:
@@ -46,7 +23,7 @@ rvm1_install_flags: '--auto-dotfiles --user-install'
 rvm1_ruby_install_flags:
 
 # Set the owner for the rvm directory
-rvm1_user: vagrant
+rvm1_user: 'ubuntu'
 
 # URL for the latest installer script
 rvm1_rvm_latest_installer: 'https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer'
