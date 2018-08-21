@@ -26,7 +26,7 @@ rvm1_symlink_to: '/usr/local/bin'
 # Install 1 or more versions of ruby
 # The last ruby listed will be set as the default ruby
 rvm1_rubies:
-  - 'ruby-2.3.1'
+  - 'ruby-2.3.1'   #later change 2.5.1
 
 # Install bundler
 rvm1_bundler_install: True
@@ -74,3 +74,5 @@ root_user: 'root'
 
 # Name of GID 0 group -- BSD systems typically use wheel instead of root
 root_group: '{{ root_user }}'
+
+rails_version: 5.1.2

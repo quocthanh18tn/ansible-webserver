@@ -5,10 +5,10 @@ VPS new
     install autosuggestion
     install postgresql and mysql
     install RoR -> RVM -> NVM
+
     install reddis and elastic search
+
     install nginx apache
-
-
 
     step1
       provisioning

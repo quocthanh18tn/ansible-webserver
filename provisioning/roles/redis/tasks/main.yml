@@ -1,0 +1,22 @@
+---
+
+
+- name: apt-get update
+  apt:
+    update_cache: yes
+
+- name: ensure packages installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - make
+    - build-essential
+    - tcl8.5
+
+- name: download latest stable redis
+  get_url: url=http://download.redis.io/redis-stable.tar.gz dest=/tmp/redis-stable.tar.gz
+
+- name: untar redis
+  command: tar zxf /tmp/redis-stable.tar.gz -C /tmp
+
+- name: build redis
+  command: make -C /tmp/redis-stable

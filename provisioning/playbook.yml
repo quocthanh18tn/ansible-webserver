@@ -6,12 +6,12 @@
     - base
     # - chrome
     # - git
-    - htop
+    # - htop
     # - meld
     # - mysql
     # - php
-    - nginx
-    - postgresql
+    # - nginx
+    # - postgresql
     # - pydf
     # - sublime
     # - tmux
@@ -19,5 +19,5 @@
     # - zsh
     # - zsh-autosuggestions
     # - wordpress
-    - nvm
+    # - nvm
     - rails
